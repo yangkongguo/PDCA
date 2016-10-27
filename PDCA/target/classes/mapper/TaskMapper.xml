@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tedu.cloudnote.dao.TaskDao">
+
+<insert id="saveTask" parameterType="list">
+insert into  task(t_id,t_body,t_plan,t_standard,t_time,t_checkP,t_complete,
+t_better,t_status,u_uid,p_id)values
+<foreach collection="list" index="index" item="obj" separator=",">
+(#{obj.t_id},#{obj.t_body},#{obj.t_plan},#{obj.t_standard},#{obj.t_time},#{obj.t_checkP},
+#{obj.t_complete},#{obj.t_better},#{obj.t_status},#{obj.u_uid},#{obj.p_id})
+</foreach>
+</insert>
+<select id="findUndo" resultType="com.tedu.cloudnote.entity.Task">
+select * from task where t_status=0;
+</select>
+<select id="findByPId" resultType="com.tedu.cloudnote.entity.Task">
+select * from task where p_id=#{pid};
+</select>
+
+</mapper> 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tedu.cloudnote.dao.UserDao">
+
+<insert id="save" 
+parameterType="com.tedu.cloudnote.entity.User">
+insert into  userinfo(u_uid ,u_name ,u_password ,
+u_phone )values(#{u_uid},#{u_name},#{u_password},
+#{u_phone});
+</insert>
+
+<select id="findByName" parameterType="string"
+resultType="com.tedu.cloudnote.entity.User">
+	select * from userinfo
+	where u_name = #{name}
+</select>
+
+<select id="searchByName" parameterType="string"
+resultType="com.tedu.cloudnote.entity.User">
+	select * from userinfo
+	where u_name like #{name};
+</select>
+<select id="findByPhone" parameterType="string" resultType="com.tedu.cloudnote.entity.User">
+	select * from userinfo
+	where u_phone= #{phone};
+</select>	
+</mapper> 

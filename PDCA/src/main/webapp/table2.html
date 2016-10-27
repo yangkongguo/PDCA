@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>我的任务</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="x-pjax-version" content="v173">
+<link rel="apple-touch-icon-precomposed" sizes="144x144"href="ico/favico-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114"href="ico/favico-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72"href="ico/favico-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed"href="ico/favico-57-precomposed.png">
+<link rel="shortcut icon" href="ico/favico.png">
+<link rel="shortcut icon" href="ico/favico.ico">
+<link rel="stylesheet" href="styles/icon.css" />
+<link rel="stylesheet" href="styles/main.css" />
+<!-- Google-Code代码高亮CSS -->
+<link rel="stylesheet" href="styles/prettify.css"/>
+</head>
+<body class="active" >
+	<header class="header">
+		<div class="header-brand">
+			<a data-pjax=".content-body" href="edit.html"> <img
+				class="brand-logo" src="images/dummy/8986f28e.stilearn-logo.png"
+				alt="Stilearn Admin Sample Logo">
+			</a>
+		</div>
+		<div class="header-profile">
+			<div class="profile-nav">
+				<span class="profile-username"></span> <a class="dropdown-toggle"
+					data-toggle="dropdown"> <span class="fa fa-angle-down"></span>
+				</a>
+				<ul class="dropdown-menu animated flipInX pull-right" role="menu">
+					<li><a href="Change_password.html"><i class="fa fa-user"></i>
+							修改密码</a></li>
+					<li class="divider"></li>
+					<li><a id="logout" href="#"><i class="fa fa-sign-out"></i>
+							退出登录</a></li>
+				</ul>
+			</div>
+		</div>
+		<form class="form-inline" onsubmit="return false;">
+			<button type="button" class="btn btn-default btn-expand-search">
+				<i class="fa fa-search"></i>
+			</button>
+			<div class="toggle-search">
+				<input type="text" class="form-control" placeholder="搜索笔记"
+					id='search_note'>
+				<button type="button" class="btn btn-default btn-collapse-search">
+					<i class="fa fa-times"></i>
+				</button>
+			</div>
+		</form>
+		<ul class="hidden-xs header-menu pull-right">
+			<li><a href="activity.html" target='_blank' title="笔记活动">活动</a>
+			</li>
+		</ul>
+	</header>
+	<div style="background-color: #f6f6">
+		<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<blockquote>
+				<p>
+					github<span>全球化的开源社区.</span>
+				</p>
+				<p>
+					<span>关键词</span> <cite>开源</cite>是一个
+				</p>
+			</blockquote>
+		
+			<ul class="breadcrumb">
+				<li>
+					<a href="#">主页</a> <span class="divider"></span>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" >类目</a>
+						<ul class="dropdown-menu">
+							<li><a>x</a></li>
+							<li><a>y</a></li>
+							<li><a>z</a></li>
+						</ul>
+				</li>
+				<li class="active">
+					<a href="#">任务</a> <span class="divider">/</span>
+				</li>
+			</ul>
+			<!-- 图片区 -->
+			<h1 class="text-center" style="text-shadow: black 1px 1px 2px;"  >
+				<span class="glyphicon glyphicon-user">工作安排</span>
+			</h1>
+			<!-- alert_background-->
+			<div class="opacity_bg" style="display: none;"></div>
+			<div id="can"></div>
+			<div class="alert" style="display: none;">
+				 <button type="button" class="close" data-dismiss="alert">×</button>
+				<h4>
+					提示
+				</h4> <strong>警告!</strong> 请注意你的个人隐私安全.
+			</div>
+			<div style="background-color: #fff;padding: 10px">
+			<ul class="nav nav-tabs" style="margin-bottom: 10px">
+			  <li class="active"><a id="do_panel_btn" href="#">未完成工作</a></li>
+			  <li><a id="finsh_panel_btn" href="#">已完成工作</a></li>
+			  <li><a id="send_panel_btn" href="#">派发工作</a></li>
+			</ul>
+		<div id="do_panel" class="panel panel-default">
+    		<div class="panel-body">
+    		<button type="button" class="btn btn-info" id="finsh_btn">已完成该项目<span class="glyphicon glyphicon-saved" style="color: white "></span></button>
+				<!-- 表格名显示 -->
+				<h3 class="center-block text-center"><strong>表格名</strong></h3>
+				<table id="do_table" class="table table-bordered table-hover" >
+					<thead>
+						<tr>
+							<th>工作内容</th>
+							<th>计划</th>
+							<th>标准</th>
+							<th>检查时间</th>
+							<th>检查人</th>
+							<th>完成情况</th>
+							<th>改进</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>暂无</td>
+							<td>暂无</td>
+							<td>暂无</td>
+							<td>暂无</td>
+							<td>暂无</td>
+							<td>暂无</td>
+							<td>暂无</td>
+						</tr>
+					</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- 完成任务表 -->
+			<div id="finsh_panel" class="panel panel-default hide">
+    		<div id="finsh_panel_body" class="panel-body">
+	       		<a style="font-family:cursive; ;">显示最新的任务份数:  </a>
+				<select style="margin-bottom: 3px">
+					<option>5</option>
+					<option>10</option>
+					<option>全部</option>
+				</select>
+				</div>
+			</div>
+			<div id="send_panel" class="panel panel-default hide">
+    		<div class="panel-body">
+				<!-- 派发任务表 -->
+				<h3><input id="title" placeholder="请输入标题" class="center-block text-center" style="width:100%;"  type="text"/></h3>
+				<button id="add_row_btn" type="button" class="btn btn-default btn-sm">
+	         				<span class="glyphicon glyphicon-plus"></span> 添加一行
+	        	</button>
+				<table  contenteditable="true" id="send_table" class="table table-bordered table-hover ">
+					<thead>
+						<tr class="disabled">
+							<th>工作内容</th>
+							<th>计划</th>
+							<th>标准</th>
+							<th>检查时间</th>
+							<th>检查人</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th>&nbsp;</th>
+							<th>&nbsp; </th>
+							<th>&nbsp; </th>
+							<th>&nbsp; </th>
+							<th>&nbsp; </th>
+						</tr>
+					</tbody>
+				</table>
+					<div class="input-group input-group-sm" style="width: 30%">
+	            		<span class="input-group-addon">@</span>
+	            		<input id="send_ipt" type="text" class="form-control" placeholder="接收人">
+	        			<span class="input-group-addon btn" id="send_btn">发送</span>
+	        		</div>
+	            	<div id="resultFind" class="list-group" style="width: 30%">
+	            	</div>	
+				</div>
+			</div>
+			<div id="pageNum_div" class="center-block" style="width: 300px">
+				<ul class="pagination"></ul>
+			</div>
+   	 	</div>
+	</div>			
+</div>
+</div>
+</div>
+
+	
+	
+	<footer>
+		<p>&copy; xxx Stilearning</p>
+		<div
+			style='position: absolute; top: 5PX; height: 30px; right: 20px; line-height: 26px; border: 1px solid #0E7D76; display: none; background: #fff'>
+			<strong style='color: #0E7D76; margin: 0 10px;'></strong>
+		</div>
+	</footer>
+	<script type="text/javascript">
+			//加载DOM之后处理页面高度
+			function get_dom(e){
+				return document.getElementById(e);
+			}
+			function set_height(){
+				var pc_height=window.innerHeight;
+				pc_height=pc_height-132;
+			
+			}
+			function myEditorWidth(){
+				var dom=get_dom('third_side_right');
+				var style=dom.currentStyle||window.getComputedStyle(dom, null);
+				get_dom('myEditor').style.width=style.width;
+			}
+			set_height();
+			//改变窗口大小时调整页面尺寸
+			window.onresize=function(){
+				set_height();
+				var width=$('#third_side_right').width()-35;
+				$('.edui-container,.edui-editor-body').width(width);
+				$('#myEditor').width(width-20);
+			};
+		</script>
+
+	<!-- Bootstrap框架JS -->
+	<script type="text/javascript" src="scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+	<script type="text/javascript" src="scripts/js-prototype.js"></script>
+	<script type="text/javascript" src="scripts/theme-setup.js"></script>
+	<script class="re-execute" src="scripts/run_prettify.js"></script>
+	<script type="text/javascript" src="scripts/basevalue.js"></script>
+	<script type="text/javascript" src="scripts/cookie_util.js"></script>
+	<script type="text/javascript" src="scripts/alert.js"></script>
+	<script type="text/javascript" src="scripts/table.js"></script>
+	<script type="text/javascript">
+			//重写JS原生alert函数
+			window.alert=function(e){
+				$('#can').load('alert_error.html',function(){
+					console.log(1333);
+					$('#error_info').text(' '+e);
+					$('.opacity_bg').show();
+				});
+				}
+			$("#can").on("click",".cancle,.close",closeAlertWindow);
+	</script>
+	
+</body>
+</html>

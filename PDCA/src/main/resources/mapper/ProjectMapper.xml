@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.tedu.cloudnote.dao.ProjectDao">
+
+<insert id="saveProject" 
+parameterType="com.tedu.cloudnote.entity.Project">
+insert into  project(p_id,p_name,p_createtime,p_status,u_uid)values
+(#{p_id},#{p_name},#{p_createtime},#{p_status},#{u_uid});
+</insert>
+<select id="findUndoProject" parameterType="string" resultType="com.tedu.cloudnote.entity.Project">
+SELECT * from project where p_status=0 and u_uid=#{uid} and p_createtime=(select p_createtime from project order by p_createtime desc limit 0,1) ;
+</select>
+<select id="findFinshProject" parameterType="string" resultType="map">
+SELECT p_id,p_name from project where p_status=1 and u_uid=#{uid} order by p_createtime desc;
+</select>
+<update id="updateProjectStatus" parameterType="map">
+	update project set p_status=1 WHERE u_uid=#{u_uid} and p_status=0 and p_name=#{p_name};
+</update>
+
+</mapper> 
